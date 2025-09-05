@@ -209,7 +209,6 @@ function update() {
 
   calculatePoly(nodes, edges);
   document.getElementById("poly").innerHTML = render(polynomial);
-  document.getElementById("edge-table").innerHTML = renderEdgeTable(edges);
 }
 
   function calculatePoly(nodes, edges, sign = 1) {
