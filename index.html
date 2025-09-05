@@ -85,11 +85,22 @@
         </a>
       </div>
 
-      <div id="edge-table"></div>
+      <div id="edge-table">
+        function updateEdgeTable(cy) {
+          const edges = cy.edges();
+          let html = '<table border="1"><tr><th>Source</th><th>Target</th></tr>';
+          edges.forEach(edge => {
+          html += `<tr><td>${edge.source().id()}</td><td>${edge.target().id()}</td></tr>`;
+          });
+          html += '</table>';
+          document.getElementById('edge-table').innerHTML = html;
+      }
+      </div>
       <div class="header">
         <p id="poly"></p>
       </div>
       <div class="content" id="cy"></div>
     </div>
   </body>
+
 </html>
