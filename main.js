@@ -187,6 +187,30 @@ function update() {
 
   calculatePoly(nodes, edges);
   document.getElementById("poly").innerHTML = render(polynomial);
+  document.getElementById("edge-table").innerHTML = renderEdgeTable(edges);
+
+function renderEdgeTable(edges) {
+  let html = "<table border='1'><tr><th>Source</th><th>Target</th></tr>";
+  edges.forEach(([source, target]) => {
+    html += `<tr><td>${source}</td><td>${target}</td></tr>`;
+  });
+  html += "</table>";
+  return html;
+}
+
+function update() {
+  var polynomial = [];
+  for (var i = 0; i < cy.nodes().length; i++) {
+    polynomial.push(0);
+  }
+
+  const nodes = cy.nodes().map(describe);
+  const edges = cy.edges().map(edgedescribe);
+
+  calculatePoly(nodes, edges);
+  document.getElementById("poly").innerHTML = render(polynomial);
+  document.getElementById("edge-table").innerHTML = renderEdgeTable(edges);
+}
 
   function calculatePoly(nodes, edges, sign = 1) {
     // console.log(JSON.stringify(nodes));
